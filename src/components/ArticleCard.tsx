@@ -1,12 +1,13 @@
-import { type Article } from "../types/Article"
+import type { Article } from "../types/Article"
 import { Card, Button } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 interface ArticleCardProps {
   article: Article
 }
 
 function ArticleCard({ article }: ArticleCardProps) {
+  const navigate = useNavigate()
   return (
     <Card className="mb-4 shadow-sm h-100">
       <Card.Img
@@ -21,13 +22,12 @@ function ArticleCard({ article }: ArticleCardProps) {
 
         <Card.Text className="flex-grow-1">{article.summary}</Card.Text>
 
-        <Button variant="primary" className="w-50">
-          <Link
-            to={`/articles/${article.id}`}
-            className="text-white text-decoration-none"
-          >
-            Leggi di più
-          </Link>
+        <Button
+          variant="primary"
+          className="w-50"
+          onClick={() => navigate(`/articles/${article.id}`)}
+        >
+          Leggi di più
         </Button>
       </Card.Body>
     </Card>
