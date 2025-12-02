@@ -21,11 +21,14 @@ function ArticleCard({ article }: ArticleCardProps) {
 
         <Card.Text className="flex-grow-1">{article.summary}</Card.Text>
 
-        <Link to={`/articles/${article.id}`}>
-          <Button variant="primary" className="w-50">
+        <Button variant="primary" className="w-50">
+          <Link
+            to={`/articles/${article.id}`}
+            className="text-white text-decoration-none"
+          >
             Leggi di più
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       </Card.Body>
     </Card>
   )
