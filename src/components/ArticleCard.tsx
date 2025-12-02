@@ -1,11 +1,12 @@
-import { type Article } from "../types/Article";
-import {Card,Button} from "react-bootstrap"
+import { type Article } from "../types/Article"
+import { Card, Button } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 interface ArticleCardProps {
-  article: Article;
+  article: Article
 }
 
- function ArticleCard({ article }: ArticleCardProps) {
+function ArticleCard({ article }: ArticleCardProps) {
   return (
     <Card className="mb-4 shadow-sm h-100">
       <Card.Img
@@ -17,22 +18,17 @@ interface ArticleCardProps {
 
       <Card.Body className="d-flex flex-column">
         <Card.Title>{article.title}</Card.Title>
-       
 
-        <Card.Text className="flex-grow-1">
-          {article.summary}
-        </Card.Text>
+        <Card.Text className="flex-grow-1">{article.summary}</Card.Text>
 
-        <Button
-          variant="primary"
-          className="btn btn-sm w-50"
-        >
-          Leggi di più
-        </Button>
-        </Card.Body>
-      
+        <Link to={`/articles/${article.id}`}>
+          <Button variant="primary" className="w-50">
+            Leggi di più
+          </Button>
+        </Link>
+      </Card.Body>
     </Card>
-  );
+  )
 }
 
 export default ArticleCard
